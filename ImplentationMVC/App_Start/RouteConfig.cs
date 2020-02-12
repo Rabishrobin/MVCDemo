@@ -12,6 +12,16 @@ namespace ImplentationMVC
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+                name: "Student",
+                url: "{student}/{action}/{id}",
+                defaults: new { controller = "Student", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Mark",
+                url: "{mark}/{action}/{id}",
+                defaults: new { controller = "Student", action = "Index", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",
