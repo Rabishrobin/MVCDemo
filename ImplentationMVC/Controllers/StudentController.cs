@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StudentManagement.DAL;
+using StudentManagement.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +11,28 @@ namespace ImplentationMVC.Controllers
     public class StudentController : Controller
     {
         // GET: Student
-        public string Index()
+        StudentRepository student;
+        public StudentController()
         {
-            return "This is student";
+            student = new StudentRepository();
+        }
+        public ActionResult Index()
+        {
+            IEnumerable<StudentDetails> students = student.GetStudentDetails();
+            return View(students);
+        }
+        public ActionResult DataPassing()
+        {
+            IEnumerable<StudentDetails> students = student.GetStudentDetails();
+            ViewBag.student = students;
+            ViewData["students"] = students;
+            return View();
+        }
+        public ActionResult TempDataChecking()
+        {
+            IEnumerable<StudentDetails> students = student.GetStudentDetails();
+            TempData["students"] = students;
+            return View();
         }
     }
 }

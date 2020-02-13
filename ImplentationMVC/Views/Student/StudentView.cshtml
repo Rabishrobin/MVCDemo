@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "StudentDetails";
+}
+
+<h2>Student</h2>
+
+<h3>Student Details-TempData</h3>
+<table border="1">
+    <tr>
+        <td>Student Name</td>
+        <td>Student CGPA</td>
+    </tr>
+    @foreach (StudentManagement.Entity.StudentDetails item in (List<StudentManagement.Entity.StudentDetails>)TempData["packages"])
+    {
+        <tr>
+            <td>
+                @item.StudentName
+            </td>
+            <td>
+                @item.StudentCGPA
+            </td>
+        </tr>
+    }
+</table>
+
+@model IEnumerable<StudentManagement.Entity.StudentDetails>
+
+@{
+    ViewBag.Title = "Student";
+}
+
+<h2>Student</h2>
+<table border="1">
+    <tr>
+        <td>Student Name</td>
+        <td>Student CGPA</td>
+    </tr>
+    @foreach (StudentManagement.Entity.StudentDetails item in @Model)
+    {
+        <tr>
+            <td>
+                @item.StudentName
+            </td>
+            <td>
+                @item.StudentDept
+            </td>
+        </tr>
+    }
+</table>
+
+
+@{
+    ViewBag.Title = "Student Details";
+}
+
+<h2>Student Details</h2>
+<h3> Student Details-ViewData</h3>
+<table border="1">
+    <tr>
+        <td>Student Name</td>
+        <td>Student Price</td>
+    </tr>
+    @foreach (StudentManagement.Entity.StudentDetails item in (List<StudentManagement.Entity.StudentDetails>)ViewData["student"])
+    {
+        <tr>
+            <td>
+                @item.StudentName
+            </td>
+            <td>
+                @item.StudentCGPA
+            </td>
+        </tr>
+    }
+</table>
+<h3>Student Details-ViewBag</h3>
+<table border="1">
+    <tr>
+        <td>Student Name</td>
+        <td>Student Price</td>
+    </tr>
+    @foreach (StudentManagement.Entity.StudentDetails item in ViewBag.Student)
+    {
+        <tr>
+            <td>
+                @item.StudentName
+            </td>
+            <td>
+                @item.StudentCGPA
+            </td>
+        </tr>
+    }
+</table>
